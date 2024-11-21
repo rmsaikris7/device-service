@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:16.0-alpine
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=deviceservice
+    ports:
+      - "5432:5432"
