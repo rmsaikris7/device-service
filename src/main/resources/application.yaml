@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: device-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/deviceservice
+    username: postgres
+    password: password
+  jpa:
+    open-in-view: false
