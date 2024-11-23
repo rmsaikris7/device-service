@@ -1,0 +1,28 @@
+[versions]
+springBoot = "3.3.5"
+dependencyManagement = "1.1.6"
+flyway = "10.0.0"
+spotless = "6.25.0"
+flywayDatabasePostgresql = "10.15.0"
+jacksonDatabindNullable = "0.2.6"
+mapstruct = "1.6.0"
+springdocOpenapi = "2.5.0"
+spotlessLib = "2.43.0"
+restAssured = "5.5.0"
+
+[libraries]
+springBootStarterDataJpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa", version.ref = "springBoot" }
+springBootStarterWeb = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springBoot" }
+flywayDatabasePostgresql = { group = "org.flywaydb", name = "flyway-database-postgresql", version.ref = "flywayDatabasePostgresql" }
+jacksonDatabindNullable = { group = "org.openapitools", name = "jackson-databind-nullable", version.ref = "jacksonDatabindNullable" }
+mapstruct = { group = "org.mapstruct", name = "mapstruct", version.ref = "mapstruct" }
+springdocOpenapi = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "springdocOpenapi" }
+spotlessLib = { group = "com.diffplug.spotless", name = "spotless-lib", version.ref = "spotlessLib" }
+spotlessPluginGradle = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless" }
+postgresql = { group = "org.postgresql", name = "postgresql" }
+lombok = { group = "org.projectlombok", name = "lombok" }
+mapstructProcessor = { group = "org.mapstruct", name = "mapstruct-processor", version.ref = "mapstruct" }
+springBootStarterTest = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "springBoot" }
+testcontainersPostgresql = { group = "org.testcontainers", name = "postgresql" }
+restAssured = { group = "io.rest-assured", name = "rest-assured", version.ref = "restAssured" }
+junitPlatformLauncher = { group = "org.junit.platform", name = "junit-platform-launcher" }

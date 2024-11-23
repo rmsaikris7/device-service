@@ -1,8 +1,9 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.3.5"
-	id("io.spring.dependency-management") version "1.1.6"
-	id("org.flywaydb.flyway") version "10.0.0"
+	id("org.springframework.boot") version libs.versions.springBoot
+	id("io.spring.dependency-management") version libs.versions.dependencyManagement
+	id("org.flywaydb.flyway") version libs.versions.flyway
+	id("com.diffplug.spotless") version libs.versions.spotless
 }
 
 group = "com.myproject.device"
@@ -25,14 +26,34 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.flywaydb:flyway-database-postgresql:10.15.0")
-	runtimeOnly("org.postgresql:postgresql")
-	compileOnly("org.projectlombok:lombok")
-	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation(libs.springBootStarterDataJpa)
+	implementation(libs.springBootStarterWeb)
+	implementation(libs.flywayDatabasePostgresql)
+	implementation(libs.jacksonDatabindNullable)
+	implementation(libs.mapstruct)
+	implementation(libs.springdocOpenapi)
+	implementation(libs.spotlessLib)
+	implementation(libs.spotlessPluginGradle)
+	runtimeOnly(libs.postgresql)
+	compileOnly(libs.lombok)
+	annotationProcessor(libs.lombok)
+	annotationProcessor(libs.mapstructProcessor)
+	testImplementation(libs.springBootStarterTest)
+	testImplementation(libs.testcontainersPostgresql)
+	testImplementation(libs.restAssured)
+	testRuntimeOnly(libs.junitPlatformLauncher)
+}
+
+spotless {
+	java {
+		target("src/*/java/**/*.java")
+		toggleOffOn()
+		palantirJavaFormat()
+		removeUnusedImports()
+		trimTrailingWhitespace()
+		endWithNewline()
+		formatAnnotations()
+	}
 }
 
 tasks.withType<Test> {

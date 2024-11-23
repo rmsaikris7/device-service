@@ -1,4 +1,18 @@
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/deviceservice
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+    depends_on:
+      - db
+    networks:
+      - db-net
   db:
     image: postgres:16.0-alpine
     container_name: db
@@ -8,3 +22,8 @@ services:
       - POSTGRES_DB=deviceservice
     ports:
       - "5432:5432"
+    networks:
+      - db-net
+networks:
+  db-net:
+    driver: bridge
